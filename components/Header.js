@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <>
-      <header className='sticky flex flex-wrap justify-between items-center w-full mx-auto top-0 py-4 z-30 bg-[#510E66] shadow-md px-6 md:px-10 text-white gradiant border-b'>
+      <header className='sticky flex flex-wrap justify-between items-center w-full mx-auto top-0 py-4 z-30 bg-[#510E66] shadow-xl px-6 md:px-10 text-white gradiant border-b'>
         <div
           className='relative flex items-center px-12 h-8 cursor-pointer'
           onClick={() => router.push('/')}
@@ -20,7 +20,7 @@ const Header = () => {
             layout='fill'
             objectFit='cover'
             objectPosition='left'
-            className='w-28 h-40 '
+            className='w-28 h-40'
           />
         </div>
 
