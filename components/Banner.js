@@ -12,12 +12,12 @@ const Banner = () => {
         layout='fill'
         objectFit='cover'
       />
-      <div className='absolute lg:top-1/4 w-full flex flex-col items-center text-center px-3 md:py-8 mx-auto'>
+      <div className='absolute lg:top-1/4 w-full flex flex-col items-center text-center px-3 pt-10 md:py-8 mx-auto'>
         <div className='flex flex-wrap flex-col items-center'>
-          <h1 className='text-xl lg:text-4xl font-bold text-white my-6 hover:text-purple-800'>
+          <h1 className='text-xl lg:text-4xl font-bold text-[#510E66] my-6 hover:text-white'>
             India's 1st study app for Paramedical & Nursing students in Kannada
           </h1>
-          <p className='text-white text-lg font-semibold mb-8 hover:text-[#510E66]'>
+          <p className='text-[#510E66] text-lg font-semibold mb-8 hover:text-purple-500'>
             Study paramedical and nursing subjects in kannada with
             <b> PrepEd </b>
             app.
