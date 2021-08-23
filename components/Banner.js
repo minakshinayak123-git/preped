@@ -11,10 +11,11 @@ const Banner = () => {
         src='https://res.cloudinary.com/minakshi-nayak/image/upload/v1629638600/photo-1571772996211-2f02c9727629_zr91kw.jpg'
         layout='fill'
         objectFit='cover'
+        className='opacity-40'
       />
       <div className='absolute lg:top-1/4 w-full flex flex-col items-center text-center px-3 pt-10 md:py-8 mx-auto'>
         <div className='flex flex-wrap flex-col items-center'>
-          <h1 className='text-xl lg:text-4xl font-bold text-[#510E66] my-6 hover:text-white'>
+          <h1 className='text-xl lg:text-4xl font-bold text-[#510E66] my-6 hover:text-purple-600'>
             India's 1st study app for Paramedical & Nursing students in Kannada
           </h1>
           <p className='text-[#510E66] text-lg font-semibold mb-8 hover:text-purple-500'>
@@ -26,7 +27,7 @@ const Banner = () => {
             EXPLORE COURSES
           </button>
           <p className='text-[#510E66] font-bold'>or</p>
-          <button className='text-white border-2 px-8 py-4 bg-none rounded-full text-center shadow-md font-semibold my-5 hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm text-sm md:text-lg'>
+          <button className='text-[#510E66] border-2 border-[#510E66] px-8 py-4 bg-none rounded-full text-center shadow-md font-semibold my-5 hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm text-sm md:text-lg'>
             Download App
           </button>
           <div className='flex pt-6'>
