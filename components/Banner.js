@@ -23,7 +23,7 @@ const Banner = () => {
             <b> PrepEd </b>
             app.
           </p>
-          <button className='text-[#510E66] px-8 py-4 bg-white rounded-full shadow-md font-bold text-xs md:text-sm my-5 hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm'>
+          <button className='text-white px-8 py-4 bg-[#510E66] rounded-full shadow-md font-bold text-xs my-5 md:text-sm  hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm'>
             EXPLORE COURSES
           </button>
           <p className='text-[#510E66] font-bold'>or</p>
