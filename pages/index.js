@@ -95,7 +95,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className='pt-2'>
+        <section className='pt-2 items-center'>
           <h2 className='text-2xl md:text-4xl text-gray-500 font-semibold pb-5 items-center text-center'>
             Our Courses
           </h2>
