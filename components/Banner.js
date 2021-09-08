@@ -3,8 +3,11 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import YouTubeIcon from '@material-ui/icons/YouTube'
 import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import { useRouter } from 'next/dist/client/router'
 
 const Banner = () => {
+  const router = useRouter()
+
   return (
     <div className='relative h-[600px] lg:h-[700px] xl:h-[800px] 2xl:h-[900px]'>
       <Image
@@ -23,7 +26,10 @@ const Banner = () => {
             <b> PrepEd </b>
             app.
           </p>
-          <button className='text-white px-8 py-4 bg-[#510E66] rounded-full shadow-md font-bold text-xs my-5 md:text-sm  hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm'>
+          <button
+            className='text-white px-8 py-4 bg-[#510E66] rounded-full shadow-md font-bold text-xs my-5 md:text-sm  hover:shadow-2xl active:scale-105 transform transition duration-300 max-w-sm'
+            onClick={() => router.push('/courses')}
+          >
             EXPLORE COURSES
           </button>
           <p className='text-[#510E66] font-bold'>or</p>
