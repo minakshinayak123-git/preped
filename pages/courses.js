@@ -3,6 +3,7 @@ import { ChevronRightIcon, SearchIcon } from '@heroicons/react/outline'
 import Header from '../components/Header'
 import courseData from '../data/courseData.json'
 import CourseCard from '../components/CourseCard'
+import Footer from '../components/Footer'
 
 const courses = ({ placeholder }) => {
   const router = useRouter()
@@ -12,7 +13,7 @@ const courses = ({ placeholder }) => {
   return (
     <>
       <Header />
-      <main className='max-width-7xl items-center mx-auto px-2 md:px-8 cursor-pointer bg-[#511164] shadow-lg md:shadow-2xl'>
+      <main className='max-width-7xl items-center mx-auto px-2 md:px-8 cursor-pointer bg-[#511164] shadow-lg md:shadow-2xl pb-10'>
         <section className='pt-6 pb-8'>
           <div className='flex flex-wrap justify-between mx-auto'>
             <div className='flex items-center py-6 pl-6 text-center'>
@@ -42,7 +43,7 @@ const courses = ({ placeholder }) => {
             All Courses
           </h2>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-y-4 p-3 ml-8 flex-1 self-center'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-y-4 p-3 ml-6 flex-1 self-center'>
             {data.map(
               ({
                 id,
@@ -69,6 +70,7 @@ const courses = ({ placeholder }) => {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   )
 }
