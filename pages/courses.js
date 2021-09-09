@@ -20,7 +20,11 @@ const courses = ({ placeholder }) => {
     const searchData = data?.filter((course) => {
       return (
         course.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-        course.category.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1
+        course.category.toLowerCase().indexOf(searchInput.toLowerCase()) !==
+          -1 ||
+        course.stream.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        course.degree.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        course.year.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1
       )
     })
     return searchData
@@ -56,14 +60,17 @@ const courses = ({ placeholder }) => {
                 className='inline-flex h-8 bg-white text-[#511164] rounded-full p-2 cursor-pointer'
                 onClick={search}
               />
-              <button onClick={resetInput} className='flex-grow text-gray-500'>
+              <button
+                onClick={resetInput}
+                className='flex-grow text-gray-400 hover:text-gray-500 text-sm lg:text-md'
+              >
                 Cancel
               </button>
             </div>
           </div>
         </section>
-        <section className='items-center bg-[#F5F5F5] rounded-xl shadow-2xl'>
-          <h2 className='text-2xl md:text-4xl text-[#511164] font-semibold pb-5 items-center text-center border-b pt-4'>
+        <section className='items-center bg-transparent rounded-xl shadow-2xl'>
+          <h2 className='text-2xl md:text-4xl text-white font-semibold pb-5 items-center text-center border-b border-gray-500 pt-4'>
             All Courses
           </h2>
 
