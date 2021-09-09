@@ -10,7 +10,7 @@ const CourseCard = ({
   year,
 }) => {
   return (
-    <div className='flex flex-col cursor-pointer hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white rounded-xl'>
+    <div className='flex flex-col cursor-pointer hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white rounded-xl mb-4 mr-4'>
       <div className='relative h-40 w-35 md:h-52 md:w-100 flex-shrink-0  mx-2 my-2'>
         <Image
           src={thumbnail}

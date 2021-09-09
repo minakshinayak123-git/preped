@@ -43,7 +43,7 @@ const courses = ({ placeholder }) => {
             All Courses
           </h2>
 
-          <div className='flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-scroll sm:scrollbar-hide space-x-4 pb-6 mx-4 my-4 space-y-4 second:space-y-4 self-center flex-shrink-0'>
+          <div className='flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-scroll sm:scrollbar-hide pb-6 ml-4 my-4  second:space-y-4 self-center flex-shrink-0 '>
             {data.map(
               ({
                 id,
