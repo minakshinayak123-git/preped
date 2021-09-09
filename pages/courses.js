@@ -39,11 +39,11 @@ const courses = ({ placeholder }) => {
           </div>
         </section>
         <section className='items-center bg-[#F5F5F5] rounded-xl shadow-2xl'>
-          <h2 className='text-2xl md:text-4xl text-[#511164] font-semibold pb-5 items-center text-center border-b'>
+          <h2 className='text-2xl md:text-4xl text-[#511164] font-semibold pb-5 items-center text-center border-b pt-4'>
             All Courses
           </h2>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-y-4 p-3 ml-6 flex-1 self-center'>
+          <div className='flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-scroll sm:scrollbar-hide space-x-4 pb-6 mx-4 my-4 space-y-4 second:space-y-4 self-center flex-shrink-0'>
             {data.map(
               ({
                 id,
