@@ -40,18 +40,30 @@ const Banner = () => {
             <FacebookIcon
               fontSize='large'
               className='bg-[#3A5A99] rounded-full  text-white mr-4 cursor-pointer p-1'
+              onClick={() => router.push('https://www.facebook.com/preped.in/')}
             />
             <InstagramIcon
               fontSize='large'
               className='bg-[#D50060] rounded-full text-white mr-4 cursor-pointer p-1'
+              onClick={() =>
+                router.push('https://www.instagram.com/prepare_edutech/')
+              }
             />
             <YouTubeIcon
               fontSize='large'
               className='bg-[#E52D27] rounded-full text-white mr-4 cursor-pointer p-1'
+              onClick={() =>
+                router.push(
+                  'https://www.youtube.com/channel/UCVKZ5BdGQUzEkz4nVathsbg'
+                )
+              }
             />
             <LinkedInIcon
               fontSize='large'
               className='bg-[#0076B2] rounded-full text-white mr-4 cursor-pointer p-1'
+              onClick={() =>
+                router.push('https://www.linkedin.com/company/prepare-edutech/')
+              }
             />
           </div>
         </div>
