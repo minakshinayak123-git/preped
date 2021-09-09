@@ -4,11 +4,27 @@ import Header from '../components/Header'
 import courseData from '../data/courseData.json'
 import CourseCard from '../components/CourseCard'
 import Footer from '../components/Footer'
+import { useState } from 'react'
 
 const courses = ({ placeholder }) => {
   const router = useRouter()
+  const [searchInput, setSearchInput] = useState('')
 
   const { data } = JSON.parse(JSON.stringify(courseData))
+
+  const resetInput = () => {
+    setSearchInput('')
+  }
+
+  const search = () => {
+    const searchData = data?.filter((course) => {
+      return (
+        course.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+        course.category.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1
+      )
+    })
+    return searchData
+  }
 
   return (
     <>
@@ -31,10 +47,18 @@ const courses = ({ placeholder }) => {
             <div className='items-center md:justify-end space-x-4 text-center'>
               <input
                 type='text'
+                value={searchInput}
                 placeholder={placeholder || 'Start your search'}
+                onChange={(e) => setSearchInput(e.target.value)}
                 className='flex-grow py-2 px-6 bg-while rounded-md shadow-md outline-none text-sm text-gray-400 placeholder-gray-400'
               />
-              <SearchIcon className='inline-flex h-8 bg-white text-[#511164] rounded-full p-2 cursor-pointer ' />
+              <SearchIcon
+                className='inline-flex h-8 bg-white text-[#511164] rounded-full p-2 cursor-pointer'
+                onClick={search}
+              />
+              <button onClick={resetInput} className='flex-grow text-gray-500'>
+                Cancel
+              </button>
             </div>
           </div>
         </section>
@@ -44,29 +68,53 @@ const courses = ({ placeholder }) => {
           </h2>
 
           <div className='flex-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:overflow-scroll sm:scrollbar-hide pb-6 ml-4 my-4  second:space-y-4 self-center flex-shrink-0 '>
-            {data.map(
-              ({
-                id,
-                thumbnail,
-                title,
-                description,
-                category,
-                stream,
-                degree,
-                year,
-              }) => (
-                <CourseCard
-                  key={id}
-                  thumbnail={thumbnail}
-                  title={title}
-                  description={description}
-                  category={category}
-                  stream={stream}
-                  degree={degree}
-                  year={year}
-                />
-              )
-            )}
+            {searchInput
+              ? search()?.map(
+                  ({
+                    id,
+                    thumbnail,
+                    title,
+                    description,
+                    category,
+                    stream,
+                    degree,
+                    year,
+                  }) => (
+                    <CourseCard
+                      key={id}
+                      thumbnail={thumbnail}
+                      title={title}
+                      description={description}
+                      category={category}
+                      stream={stream}
+                      degree={degree}
+                      year={year}
+                    />
+                  )
+                )
+              : data?.map(
+                  ({
+                    id,
+                    thumbnail,
+                    title,
+                    description,
+                    category,
+                    stream,
+                    degree,
+                    year,
+                  }) => (
+                    <CourseCard
+                      key={id}
+                      thumbnail={thumbnail}
+                      title={title}
+                      description={description}
+                      category={category}
+                      stream={stream}
+                      degree={degree}
+                      year={year}
+                    />
+                  )
+                )}
           </div>
         </section>
       </main>
