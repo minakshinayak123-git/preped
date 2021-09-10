@@ -16,7 +16,7 @@ const CourseCard = ({
 
   return (
     <div className='flex md:flex-col sm:py-7 sm:px-3 sm:pr-6 cursor-pointer rounded-lg hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white mb-4 mr-4'>
-      <div className='relative h-50 w-40 md:h-52 md:w-100 flex-shrink-0 mx-2 my-2'>
+      <div className='relative h-50 w-40 md:w-50 md:h-40 lg:w-60 lg:h-60 flex-shrink-0 mx-2 my-2 md:mx-1 md:my-1 md:self-center'>
         <Link href={`/courses/${id}`}>
           <Image
             src={thumbnail}
@@ -26,7 +26,7 @@ const CourseCard = ({
           />
         </Link>
       </div>
-      <div className='flex flex-col flex-grow p-4 justify-center items-left'>
+      <div className='flex flex-col flex-grow p-4 md:p-2 justify-center items-left'>
         <p className='text-sm md:text-md text-gray-800 font-semibold pb-2'>
           {category}
         </p>
