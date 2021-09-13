@@ -52,9 +52,11 @@ const CourseCard = ({
 
         <p className='text-gray-500 text-xs md:text-md'>{description}</p>
         {isComingSoon ? (
-          <p className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'>
-            Coming Soon...
-          </p>
+          <Link href={`/course/${id}`}>
+            <p className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'>
+              Coming Soon...
+            </p>
+          </Link>
         ) : (
           <Link href={`/course/${id}`}>
             <p className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'>
