@@ -71,7 +71,7 @@ const CoursePage = () => {
               className='bg-[#25D366] rounded-full  text-white mr-4 cursor-pointer p-1'
               onClick={() =>
                 router.push(
-                  'https://api.whatsapp.com/send?text=https://www.preped.in/course/58f9d66f-24df-48fc-b061-efbce39f39ca'
+                  'https://api.whatsapp.com/send?text=https://preped-new-hejakn67m-minakshiknayak-gmailcom.vercel.app/course/58f9d66f-24df-48fc-b061-efbce39f39ca'
                 )
               }
             />
