@@ -11,33 +11,61 @@ const CourseCard = ({
   stream,
   degree,
   year,
+  isComingSoon,
+  isPublished,
 }) => {
   const router = useRouter()
 
+  const course = () => {
+    router.push({
+      pathname: '/course',
+      query: {
+        id: id,
+      },
+    })
+  }
+
   return (
     <div className='flex md:flex-col sm:py-7 sm:px-3 sm:pr-6 cursor-pointer rounded-lg hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white mb-4 mr-4'>
-      <div className='relative h-50 w-40 md:w-50 md:h-40 lg:w-60 lg:h-60 flex-shrink-0 mx-2 my-2 md:mx-1 md:my-1 md:self-center'>
-        <Link href={`/courses/${id}`}>
-          <Image
-            src={thumbnail}
-            layout='fill'
-            className='rounded-md'
-            objectFit='cover'
-          />
-        </Link>
+      <div className='relative h-24 w-40 md:w-50 md:h-40 md:w-60 lg:w-60 lg:h-60 flex-shrink-0 mx-2 my-2 md:mx-1 md:my-1 md:self-center'>
+        <Image
+          src={thumbnail}
+          layout='fill'
+          className='rounded-md'
+          objectFit='cover'
+          onClick={course}
+        />
       </div>
-      <div className='flex flex-col flex-grow p-4 md:p-2 justify-center items-left'>
+
+      <div className='flex flex-col flex-grow p-4 lg:mt-6 md:p-2 justify-center items-left'>
         <p className='text-sm md:text-md text-gray-800 font-semibold pb-2'>
           {category}
         </p>
         <p className='text-xs text-gray-500 font-semibold pb-2'>{`${stream} | ${degree} | ${year}`}</p>
-        <Link href={`/courses/${id}`}>
-          <h3 className='text-sm md:text-lg xl:text-xl font-semibold  pb-2'>
-            {title}
-          </h3>
-        </Link>
+
+        <h3
+          className='text-sm md:text-lg xl:text-xl font-semibold  pb-2'
+          onClick={course}
+        >
+          {title}
+        </h3>
 
         <p className='text-gray-500 text-xs md:text-md'>{description}</p>
+        {isComingSoon ? (
+          <p
+            className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'
+            onClick={course}
+          >
+            Coming Soon...
+          </p>
+        ) : (
+          <p
+            className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'
+            onClick={course}
+          >
+            Know More...
+          </p>
+        )}
       </div>
     </div>
   )

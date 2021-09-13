@@ -86,6 +86,7 @@ const courses = ({ placeholder }) => {
                     stream,
                     degree,
                     year,
+                    isComingSoon,
                   }) => (
                     <CourseCard
                       key={id}
@@ -97,6 +98,7 @@ const courses = ({ placeholder }) => {
                       stream={stream}
                       degree={degree}
                       year={year}
+                      isComingSoon={isComingSoon}
                     />
                   )
                 )
@@ -110,6 +112,7 @@ const courses = ({ placeholder }) => {
                     stream,
                     degree,
                     year,
+                    isComingSoon,
                   }) => (
                     <CourseCard
                       key={id}
@@ -121,6 +124,7 @@ const courses = ({ placeholder }) => {
                       stream={stream}
                       degree={degree}
                       year={year}
+                      isComingSoon={isComingSoon}
                     />
                   )
                 )}
