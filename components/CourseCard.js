@@ -12,7 +12,6 @@ const CourseCard = ({
   degree,
   year,
   isComingSoon,
-  isPublished,
 }) => {
   const router = useRouter()
 
@@ -24,6 +23,10 @@ const CourseCard = ({
   //     },
   //   })
   // }
+
+  const comingSoon = () => {
+    alert('This course will be available soon')
+  }
 
   return (
     <div className='flex md:flex-col sm:py-7 sm:px-3 sm:pr-6 cursor-pointer rounded-lg hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white mb-4 mr-4'>
@@ -52,11 +55,12 @@ const CourseCard = ({
 
         <p className='text-gray-500 text-xs md:text-md'>{description}</p>
         {isComingSoon ? (
-          <Link href={`/course/${id}`}>
-            <p className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'>
-              Coming Soon...
-            </p>
-          </Link>
+          <p
+            className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'
+            onClick={comingSoon}
+          >
+            Coming Soon...
+          </p>
         ) : (
           <Link href={`/course/${id}`}>
             <p className='text-blue-800 text-xs font-bold md:text-md pt-4 md:pt-6'>
