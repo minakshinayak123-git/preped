@@ -9,14 +9,18 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import Lectures from '../../components/Lectures'
 
-const CoursePage = () => {
-  const { data } = JSON.parse(JSON.stringify(courseData))
+const CoursePage = ({ data }) => {
+  //const { data } = JSON.parse(JSON.stringify(courseData))
   const router = useRouter()
 
   const id = router.query.id
 
-  console.log(getCourseData(data, id).sections)
+  const { title, description, category, price, sections } = getCourseData(
+    data,
+    id
+  )
 
+  const [section1, ...remainingSection] = getCourseData(data, id)?.sections
   return (
     <>
       <Header />
@@ -39,9 +43,7 @@ const CoursePage = () => {
                 Courses
               </p>
               <ChevronRightIcon className='text-white hover:text-gray-400 mr-2 h-4' />
-              <p className='text-gray-500 text-sm'>
-                {getCourseData(data, id)?.title}
-              </p>
+              <p className='text-gray-500 text-sm'>{title}</p>
             </div>
           </div>
         </section>
@@ -64,17 +66,17 @@ const CoursePage = () => {
             </div>
             <div className='flex flex-col p-4 lg:mt-6 md:p-2 justify-center items-center'>
               <p className='text-sm md:text-md text-gray-800 font-semibold pb-2 pt-8'>
-                {getCourseData(data, id)?.category}
+                {category}
               </p>
 
               <h3 className='text-sm md:text-lg xl:text-xl font-semibold  pb-2 text-center'>
-                {getCourseData(data, id)?.title}
+                {title}
               </h3>
               <p className='text-gray-800 text-md md:text-lg pt-4 text-center'>
-                {getCourseData(data, id)?.description}
+                {description}
               </p>
               <p className='text-gray-800 text-lg font-bold pt-4 text-center'>
-                ${getCourseData(data, id)?.price}
+                ${price}
               </p>
               <button className='text-sm text-white bg-gray-900 px-10 py-3  font-semibold rounded-lg mt-5'>
                 Buy
@@ -106,7 +108,11 @@ const CoursePage = () => {
             Lectures
           </h2>
           <div className='pt-4'>
-            <Lectures sections={getCourseData(data, id).sections} />
+            <Lectures
+              sections={sections}
+              section1={section1}
+              remainingSection={remainingSection}
+            />
           </div>
         </section>
       </main>
@@ -116,3 +122,12 @@ const CoursePage = () => {
 }
 
 export default CoursePage
+
+export async function getServerSideProps() {
+  const { data } = await JSON.parse(JSON.stringify(courseData))
+  return {
+    props: {
+      data,
+    },
+  }
+}
