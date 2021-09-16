@@ -8,19 +8,19 @@ import { useRouter } from 'next/dist/client/router'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import Lectures from '../../components/Lectures'
+import Educators from '../../components/Educators'
 
 const CoursePage = ({ data }) => {
-  //const { data } = JSON.parse(JSON.stringify(courseData))
   const router = useRouter()
-
   const id = router.query.id
 
-  const { title, description, category, price, sections } = getCourseData(
-    data,
-    id
-  )
+  const { title, description, category, price } = getCourseData(data, id)
 
   const [section1, ...remainingSection] = getCourseData(data, id)?.sections
+
+  const { authors } = getCourseData(data, id)
+
+  console.log(getCourseData(data, id))
   return (
     <>
       <Header />
@@ -103,16 +103,38 @@ const CoursePage = ({ data }) => {
             </div>
           </div>
         </section>
-        <section className='items-center bg-[#f5f5f5] rounded-xl shadow-2xl p-8 mt-10'>
-          <h2 className='text-2xl md:text-4xl text-gray-800 font-semibold pb-2 items-center border-b border-gray-200 pt-4'>
-            Lectures
-          </h2>
-          <div className='pt-4'>
-            <Lectures
-              sections={sections}
-              section1={section1}
-              remainingSection={remainingSection}
-            />
+        <section>
+          <div className='flex flex-wrap md:flex-nowrap bg-[#f5f5f5] rounded-xl shadow-2xl p-2 mt-10'>
+            <div className='flex flex-col md:w-2/3'>
+              <h2 className='text-2xl md:text-4xl text-gray-800 font-semibold pb-2  items-center text-center border-b border-gray-200'>
+                Lectures
+              </h2>
+              <div className='pt-4'>
+                <Lectures
+                  section1={section1}
+                  remainingSection={remainingSection}
+                />
+              </div>
+            </div>
+
+            <div className='flex flex-col md:w-1/3'>
+              <h2 className='text-2xl md:text-4xl text-gray-800 font-semibold pb-2  items-center text-center border-b border-gray-200'>
+                Educators
+              </h2>
+              <div className='pt-4'>
+                {authors.map(
+                  ({ id, first_name, last_name, biography, profile_pic }) => (
+                    <Educators
+                      key={id}
+                      first_name={first_name}
+                      last_name={last_name}
+                      biography={biography}
+                      profile_pic={profile_pic}
+                    />
+                  )
+                )}
+              </div>
+            </div>
           </div>
         </section>
       </main>
