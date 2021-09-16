@@ -20,7 +20,6 @@ const CoursePage = ({ data }) => {
 
   const { authors } = getCourseData(data, id)
 
-  console.log(getCourseData(data, id))
   return (
     <>
       <Header />
