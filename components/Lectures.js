@@ -1,7 +1,13 @@
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline'
 import LockIcon from '@material-ui/icons/Lock'
 
-const Lectures = ({ section1, remainingSection }) => {
+const Lectures = ({
+  section1,
+  remainingSection,
+  playVideoSection1,
+  unlockVideo,
+  unlockVideoIcon,
+}) => {
   return (
     <div className='flex md:flex-col sm:py-7 sm:px-3 cursor-pointer rounded-lg hover:opacity-80 hover:shadow-lg transform transition duration-200 easy-out bg-white mb-4 md:mr-4'>
       <div className='flex flex-col space-y-1 px-4 py-6'>
@@ -14,6 +20,7 @@ const Lectures = ({ section1, remainingSection }) => {
             <PlayCircleOutlineIcon
               fontSize='medium'
               className='rounded-full cursor-pointer p-1'
+              onClick={playVideoSection1}
             />
             <p className='cursor-pointer text-sm md:text-md '>{video.name}</p>
           </div>
@@ -31,7 +38,22 @@ const Lectures = ({ section1, remainingSection }) => {
                 <LockIcon
                   fontSize='medium'
                   className='rounded-full mr-1 cursor-pointer p-1'
+                  onClick={unlockVideo}
                 />
+                {/* {unlockVideoIcon ? (
+                  <PlayCircleOutlineIcon
+                    fontSize='medium'
+                    className='rounded-full mr-1 cursor-pointer p-1'
+                    onClick={unlockVideo}
+                  />
+                ) : (
+                  <LockIcon
+                    fontSize='medium'
+                    className='rounded-full mr-1 cursor-pointer p-1'
+                    onClick={unlockVideo}
+                  />
+                )} */}
+
                 <p className='cursor-pointer text-md'>{video.name}</p>
               </div>
             ))}

@@ -2,11 +2,18 @@ import Image from 'next/image'
 import { PhoneIcon, MenuIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/dist/client/router'
 import { useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
+import Link from 'next/link'
 
 const Header = () => {
   const router = useRouter()
+  const { user, error, isLoading } = useUser()
 
   const [menuOpened, setMenuOpened] = useState(false)
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
@@ -33,10 +40,23 @@ const Header = () => {
             <PhoneIcon className='h-4 cursor-pointer' />
             <p className='cursor-pointer text-xs'>+91- 7676010218</p>
           </div>
-          <p className='text-xs cursor-pointer hover:text-purple-300'>Login</p>
-          <p className='text-xs cursor-pointer hover:text-purple-300'>
+          {!user && (
+            <Link href='/api/auth/login'>
+              <p className='text-xs cursor-pointer hover:text-purple-300 py-3'>
+                Login
+              </p>
+            </Link>
+          )}
+
+          {/* <p className='text-xs cursor-pointer hover:text-purple-300'>Login</p> */}
+          {/* <p className='text-xs cursor-pointer hover:text-purple-300'>
             Register
-          </p>
+          </p> */}
+          {user && (
+            <p className='text-xs cursor-pointer hover:text-purple-300'>
+              Welcome {user.name}!<Link href='/api/auth/logout'> Logout</Link>
+            </p>
+          )}
         </div>
         <div className='block md:hidden pr-3' x-data='{menuOpened:false}'>
           <MenuIcon
@@ -55,9 +75,31 @@ const Header = () => {
             <PhoneIcon className='h-4 cursor-pointer' />
             <p className='cursor-pointer text-xs'>+91- 7676010218</p>
           </div>
-          <p className='text-xs cursor-pointer hover:text-purple-800 py-3'>
-            Login
-          </p>
+          {/* {isLoading ? (
+            <div>Loading...</div>
+          ) : error ? (
+            <div>{error.message}</div>
+          ) : (
+            <Link href='/api/auth/login' passHref>
+              <p className='text-xs cursor-pointer hover:text-purple-800 py-3'>
+                Login
+              </p>
+            </Link>
+          )} */}
+          {!user && (
+            <Link href='/api/auth/login'>
+              <p className='text-xs cursor-pointer hover:text-purple-800 py-3'>
+                Login
+              </p>
+            </Link>
+          )}
+
+          {user && (
+            <p className='text-xs cursor-pointer hover:text-purple-800 py-3'>
+              Welcome {user.name}! <Link href='/api/auth/logout'>Logout</Link>
+            </p>
+          )}
+
           <p className='text-xs cursor-pointer hover:text-purple-800 py-3'>
             Register
           </p>

@@ -138,9 +138,15 @@ export default function Home() {
         <title>Prepare Edutech</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
       <Header />
       <Banner />
       <main className='max-width-7xl mx-auto px-2 md:px-8 cursor-pointer bg-white shadow-lg md:shadow-2xl'>
+        {/* {!user && (
+          <Link href='/api/auth/login' className='mt-200'>
+            login
+          </Link>
+        )} */}
         <section className='pt-6'>
           <div className='flex flex-col items-center text-center hover:scale-95 transform transition duration:300 easy-in-out mb-8'>
             <h2 className='text-md md:text-lg lg:text-xl font-semibold lg:font-bold pb-6 border-b-4 mb-4 rounded-lg text-gray-700'>

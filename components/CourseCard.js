@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router'
 import Link from 'next/link'
 import Image from 'next/image'
+import Swal from 'sweetalert2'
 
 const CourseCard = ({
   id,
@@ -25,7 +26,18 @@ const CourseCard = ({
   // }
 
   const comingSoon = () => {
-    alert('This course will be available soon')
+    // alert('This course will be available soon')
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'This course will be available soon',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown',
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp',
+      },
+    })
   }
 
   return (

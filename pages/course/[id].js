@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ReactPlayer from 'react-player'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
@@ -9,8 +10,16 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import Lectures from '../../components/Lectures'
 import Educators from '../../components/Educators'
+import Swal from 'sweetalert2'
+import { useUser } from '@auth0/nextjs-auth0'
 
 const CoursePage = ({ data }) => {
+  const [playVideo, setPlayVideo] = useState(false)
+  const [videoURL, setVideoURL] = useState(
+    'https://www.youtube.com/watch?v=ysz5S6PUM-U'
+  )
+  const [unlockVideoIcon, setUnlockVideoIcon] = useState(false)
+
   const router = useRouter()
   const id = router.query.id
 
@@ -18,7 +27,53 @@ const CoursePage = ({ data }) => {
 
   const [section1, ...remainingSection] = getCourseData(data, id)?.sections
 
+  console.log(remainingSection)
+
   const { authors } = getCourseData(data, id)
+  const { user, isLoading, error } = useUser()
+
+  const onChangeVideo = () => {
+    setPlayVideo(true)
+    if (playVideo) {
+      if (videoURL === 'https://www.youtube.com/watch?v=ysz5S6PUM-U') {
+        setVideoURL('https://www.youtube.com/watch?v=_qAKwbqcvfw')
+      } else {
+        setVideoURL('https://www.youtube.com/watch?v=ysz5S6PUM-U')
+      }
+    }
+  }
+
+  const unlockVideo = () => {
+    //const result = confirm('Do you wish to purchase this course?')
+
+    Swal.fire({
+      title: 'Do you wish to purchase this course?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, I want to purchase this course!',
+    }).then((result) => {
+      if (!user) {
+        router.push('/api/auth/login')
+      } else if (user && result.isConfirmed) {
+        Swal.fire(
+          'Good Job!',
+          'Successfully purchased, view the course in app',
+          'success'
+        )
+        setUnlockVideoIcon(true)
+      }
+    })
+
+    // if (user && result) {
+    //   return Swal.fire(
+    //     'Good Job!',
+    //     'Successfully purchased, view the course in app',
+    //     'success'
+    //   )
+    // }
+  }
 
   return (
     <>
@@ -57,11 +112,17 @@ const CoursePage = ({ data }) => {
                 height='100%'
                 frameBorder='0'
               /> */}
-              <ReactPlayer
-                url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-                width='100%'
-                height='100%'
-              />
+
+              {playVideo ? (
+                <ReactPlayer
+                  url={videoURL}
+                  width='100%'
+                  height='100%'
+                  playing={true}
+                />
+              ) : (
+                <ReactPlayer url={videoURL} width='100%' height='100%' />
+              )}
             </div>
             <div className='flex flex-col p-4 lg:mt-6 md:p-2 justify-center items-center'>
               <p className='text-sm md:text-md text-gray-800 font-semibold pb-2 pt-8'>
@@ -112,6 +173,9 @@ const CoursePage = ({ data }) => {
                 <Lectures
                   section1={section1}
                   remainingSection={remainingSection}
+                  playVideoSection1={onChangeVideo}
+                  unlockVideo={unlockVideo}
+                  unlockVideoIcon={unlockVideoIcon}
                 />
               </div>
             </div>
